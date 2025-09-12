@@ -2,7 +2,9 @@ name: Android CI
 
 on:
   push:
-    branches: [ main ]
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
 
 jobs:
   build:
@@ -17,6 +19,9 @@ jobs:
         with:
           distribution: temurin
           java-version: 11
+
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
 
       - name: Run unit tests
         run: ./gradlew testDebugUnitTest --no-daemon
