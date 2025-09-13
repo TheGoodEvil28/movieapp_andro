@@ -29,7 +29,7 @@
         android:id="@+id/btnFavorite"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:src="@android:drawable/ic_favorite_border"
+        android:src="@drawable/ic_favorite_border"
         android:background="?attr/selectableItemBackgroundBorderless"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="@id/imgPoster"/>

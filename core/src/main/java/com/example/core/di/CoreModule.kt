@@ -5,6 +5,7 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import okhttp3.CertificatePinner
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -33,10 +34,22 @@ object CoreModule {
     @Provides
     @Singleton
     fun provideOkHttp(clientInterceptor: Interceptor): OkHttpClient {
-        val logger = HttpLoggingInterceptor().apply { level = HttpLoggingInterceptor.Level.BASIC }
+        val logger = HttpLoggingInterceptor().apply {
+            level = HttpLoggingInterceptor.Level.BASIC
+        }
+
+        val certificatePinner = CertificatePinner.Builder()
+            // ini domain utama TMDB API
+            .add("api.themoviedb.org",
+                "sha256/f78NVAesYtdZ9OGSbK7VtGQkSIVykh3DnduuLIJHMu4=",
+                "sha256/G9LNNAql897egYsabashkzUCTEJkWBzgoEtk8X/678c=",
+                "sha256/++MBgDH5WGvL9Bcn5Be30cRcL0f5O+NyoXuWtQdX1aI=") // ganti fingerprint
+            .build()
+
         return OkHttpClient.Builder()
             .addInterceptor(clientInterceptor)
             .addInterceptor(logger)
+            .certificatePinner(certificatePinner)
             .build()
     }
 

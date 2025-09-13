@@ -22,7 +22,7 @@ android {
 
     buildTypes {
         release {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -62,6 +62,10 @@ dependencies {
     implementation(libs.androidx.junit.ktx)
     kapt (libs.compiler)
     implementation(libs.androidx.activity.ktx)
+    implementation ("androidx.room:room-runtime:2.6.1")
+    kapt ("androidx.room:room-compiler:2.6.1")
+    implementation ("androidx.room:room-ktx:2.6.1")
+    implementation("org.jetbrains.kotlinx:kotlinx-metadata-jvm:0.6.0")
 //    implementation(libs.hilt.android.v2571)
     implementation(libs.androidx.recyclerview)
 //    kapt(libs.hilt.compiler.v2571)
@@ -91,6 +95,9 @@ dependencies {
     implementation ("com.google.dagger:hilt-android:2.51.1")
     kapt ("com.google.dagger:hilt-compiler:2.51.1")
     implementation("androidx.fragment:fragment-ktx:1.6.1")
+    debugImplementation("com.squareup.leakcanary:leakcanary-android:2.14")
+    implementation("net.zetetic:android-database-sqlcipher:4.5.4")
+    implementation("androidx.sqlite:sqlite:2.3.1")
 }
 
 configurations.all {

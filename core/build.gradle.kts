@@ -51,9 +51,10 @@ dependencies {
     // Room
     implementation("androidx.room:room-runtime:2.6.1")
     implementation(libs.androidx.junit.ktx)
+//    implementation(libs.androidx.room.common.jvm)
     kapt("androidx.room:room-compiler:2.6.1")
     implementation("androidx.room:room-ktx:2.6.1")
-
+    implementation("org.jetbrains.kotlinx:kotlinx-metadata-jvm:0.6.0")
     // Coroutines
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
@@ -94,6 +95,9 @@ dependencies {
     implementation ("com.google.dagger:hilt-android:2.51.1")
     kapt ("com.google.dagger:hilt-compiler:2.51.1")
     implementation("androidx.fragment:fragment-ktx:1.6.1")
+
+    implementation("net.zetetic:android-database-sqlcipher:4.5.4")
+    implementation("androidx.sqlite:sqlite:2.3.1")
 }
 
 configurations {

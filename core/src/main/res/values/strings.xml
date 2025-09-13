@@ -2,4 +2,6 @@
 <resources>
     <string name="favorite" />
     <string name="movie_title">Movie Title</string>
+    <string name="app_name" />
+    <string name="MovieApp" />
 </resources>
