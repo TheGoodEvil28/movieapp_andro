@@ -16,4 +16,14 @@ class FavoriteViewModel @Inject constructor(
 
     val favorites = repo.getFavoriteMovies().asLiveData()
 
+    fun toggleFavorite(movie: Movie) {
+        viewModelScope.launch {
+            if (movie.isFavorite) {
+                repo.removeFavorite(movie)
+            } else {
+                repo.addFavorite(movie)
+            }
+        }
+    }
 }
+

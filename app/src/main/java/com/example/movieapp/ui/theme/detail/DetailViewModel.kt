@@ -6,7 +6,6 @@ import com.example.core.domain.model.Movie
 import com.example.core.domain.usecase.GetMovieDetailUseCase
 import com.example.core.domain.repository.MovieRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.filterNotNull

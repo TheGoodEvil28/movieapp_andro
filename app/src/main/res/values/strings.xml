@@ -1,14 +1,10 @@
 <resources>
     <string name="app_name">MovieApp</string>
-    <string name="title_dynamicfeature">Module Title</string>
     <string name="title_favorite">Favorite</string>
     <string name="favorite_icon">favorite_icon</string>
     <string name="favorite">favorite</string>
-    <string name="home">Home</string>
-    <string name="favorites">Favorites</string>
     <string name="release_date">Release Date: %1$s</string>
     <string name="rating">Rating: %1$.1f</string>
-    <string name="genre">Genre: %1$s</string>
     <string name="no_favorite_movies_yet" />
 
 </resources>

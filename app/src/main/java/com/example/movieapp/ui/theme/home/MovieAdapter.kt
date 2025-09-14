@@ -60,10 +60,6 @@ class MovieAdapter(
     override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
         holder.bind(getItem(position))
     }
-    fun submitUpdatedMovie(updated: Movie) {
-        val newList = currentList.map { if (it.id == updated.id) updated else it }
-        submitList(newList)
-    }
 
     companion object {
         private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<Movie>() {

@@ -19,12 +19,9 @@ android {
     }
 
     buildTypes {
-        release {
-            isMinifyEnabled = false
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
+        buildTypes {
+            release { consumerProguardFiles("consumer-rules.pro") }
+            debug  { consumerProguardFiles("consumer-rules.pro") } // optional during testing
         }
     }
     compileOptions {
@@ -52,6 +49,7 @@ dependencies {
     implementation("androidx.room:room-runtime:2.6.1")
     implementation(libs.androidx.junit.ktx)
 //    implementation(libs.androidx.room.common.jvm)
+    //noinspection KaptUsageInsteadOfKsp
     kapt("androidx.room:room-compiler:2.6.1")
     implementation("androidx.room:room-ktx:2.6.1")
     implementation("org.jetbrains.kotlinx:kotlinx-metadata-jvm:0.6.0")
@@ -64,6 +62,7 @@ dependencies {
     kapt("com.google.dagger:hilt-compiler:2.51.1")
     implementation (libs.glide)
     implementation(libs.androidx.junit.ktx)
+    //noinspection KaptUsageInsteadOfKsp
     kapt (libs.compiler)
     implementation(libs.androidx.activity.ktx)
 //    implementation(libs.hilt.android.v2571)
@@ -79,6 +78,7 @@ dependencies {
     implementation(libs.converter.gson)
     implementation(libs.okhttp.logging)
     implementation(libs.room.runtime)
+    //noinspection KaptUsageInsteadOfKsp
     kapt(libs.room.compiler)
     implementation(libs.room.ktx)
     implementation(libs.kotlinx.coroutines.core)

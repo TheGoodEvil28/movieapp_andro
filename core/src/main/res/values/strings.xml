@@ -3,5 +3,7 @@
     <string name="favorite" />
     <string name="movie_title">Movie Title</string>
     <string name="app_name" />
-    <string name="MovieApp" />
+    <string name="movie_overview_goes_here">Movie overview goes here...</string>
+    <string name="movieposter">MoviePoster</string>
+    <string name="btnfavcore">btnfavcore</string>
 </resources>

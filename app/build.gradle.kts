@@ -28,7 +28,13 @@ android {
                 "proguard-rules.pro"
             )
         }
+        debug {
+            // sementara buat debug: disable minify supaya SQLCipher & Hilt aman saat dev.
+            isMinifyEnabled = false
+            // (opsional) proguardFiles(...) kalau mau tetap pakai
+        }
     }
+
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
@@ -60,9 +66,11 @@ dependencies {
     implementation(project(":core"))
     implementation (libs.glide)
     implementation(libs.androidx.junit.ktx)
+    //noinspection KaptUsageInsteadOfKsp
     kapt (libs.compiler)
     implementation(libs.androidx.activity.ktx)
     implementation ("androidx.room:room-runtime:2.6.1")
+    //noinspection KaptUsageInsteadOfKsp
     kapt ("androidx.room:room-compiler:2.6.1")
     implementation ("androidx.room:room-ktx:2.6.1")
     implementation("org.jetbrains.kotlinx:kotlinx-metadata-jvm:0.6.0")
@@ -79,6 +87,7 @@ dependencies {
     implementation(libs.converter.gson)
     implementation(libs.okhttp.logging)
     implementation(libs.room.runtime)
+    //noinspection KaptUsageInsteadOfKsp
     kapt(libs.room.compiler)
     implementation(libs.room.ktx)
     implementation(libs.kotlinx.coroutines.core)

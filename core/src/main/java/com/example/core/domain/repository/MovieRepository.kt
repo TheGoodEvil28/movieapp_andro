@@ -1,6 +1,5 @@
 package com.example.core.domain.repository
 
-import android.view.View
 import com.example.core.domain.model.Movie
 import kotlinx.coroutines.flow.Flow
 

@@ -2,18 +2,16 @@ package com.example.movieapp.di
 
 import android.content.Context
 import androidx.room.Room
-import com.example.core.data.repository.MovieRepositoryImpl
 import com.example.core.data.source.local.MovieDao
 import com.example.core.data.source.local.MovieDatabase
-import com.example.core.data.source.remote.ApiService
-import com.example.core.domain.repository.MovieRepository
 import com.example.movieapp.BuildConfig
-import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import net.sqlcipher.database.SQLiteDatabase
+import net.sqlcipher.database.SupportFactory
 import javax.inject.Named
 import javax.inject.Singleton
 
@@ -28,8 +26,20 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideDatabase(@ApplicationContext context: Context): MovieDatabase =
-        Room.databaseBuilder(context, MovieDatabase::class.java, "movie.db").build()
+    fun provideDatabase(@ApplicationContext context: Context): MovieDatabase {
+        // 🔑 bikin passphrase untuk SQLCipher
+        val passphrase: ByteArray = SQLiteDatabase.getBytes("secret_key".toCharArray())
+        val factory = SupportFactory(passphrase)
+
+        return Room.databaseBuilder(
+            context,
+            MovieDatabase::class.java,
+            "movie.db"
+        )
+            .openHelperFactory(factory) // ✅ enkripsi aktif
+            .fallbackToDestructiveMigration() // opsional
+            .build()
+    }
 
     @Provides
     fun provideMovieDao(db: MovieDatabase): MovieDao = db.movieDao()

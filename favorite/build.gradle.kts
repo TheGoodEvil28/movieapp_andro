@@ -1,9 +1,8 @@
 plugins {
-    id("com.android.library")
-
-    id ("org.jetbrains.kotlin.android")
-    id("kotlin-kapt")
-    id("com.google.dagger.hilt.android") // 🔥 WAJIB
+    alias(libs.plugins.android.library)
+    alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.dagger.hilt.android)
+    id("org.jetbrains.kotlin.kapt") // 🔥 WAJIB
 }
 
 android {
@@ -16,14 +15,12 @@ android {
     }
 
     buildTypes {
-        release {
-            isMinifyEnabled = false
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
+        buildTypes {
+            release { consumerProguardFiles("consumer-rules.pro") }
+            debug  { consumerProguardFiles("consumer-rules.pro") } // optional during testing
         }
     }
+
 
     buildFeatures {
         viewBinding = true

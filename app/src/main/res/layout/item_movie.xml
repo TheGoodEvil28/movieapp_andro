@@ -30,7 +30,6 @@
 
     <!-- Info container -->
     <LinearLayout
-        android:id="@+id/infoContainer"
         android:orientation="vertical"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
