@@ -11,6 +11,9 @@ android {
     compileSdk = 36
 
     defaultConfig {
+        ndk {
+            abiFilters += listOf("armeabi-v7a", "arm64-v8a", "x86", "x86_64")
+        }
         applicationId = "com.example.movieapp"
         minSdk = 24
         targetSdk = 34
@@ -23,17 +26,21 @@ android {
     buildTypes {
         release {
             isMinifyEnabled = true
+            isShrinkResources = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
         }
         debug {
-            // sementara buat debug: disable minify supaya SQLCipher & Hilt aman saat dev.
             isMinifyEnabled = false
-            // (opsional) proguardFiles(...) kalau mau tetap pakai
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
         }
     }
+
 
 
     compileOptions {

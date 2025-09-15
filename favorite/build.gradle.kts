@@ -15,9 +15,20 @@ android {
     }
 
     buildTypes {
-        buildTypes {
-            release { consumerProguardFiles("consumer-rules.pro") }
-            debug  { consumerProguardFiles("consumer-rules.pro") } // optional during testing
+        release {
+            isMinifyEnabled = true
+//            isShrinkResources = true
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "consumer-rules.pro"
+            )
+        }
+        debug {
+          isMinifyEnabled = false
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "consumer-rules.pro"
+            )
         }
     }
 
